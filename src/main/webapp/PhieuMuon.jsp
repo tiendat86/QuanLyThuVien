@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
           integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../../Java/QuanLyThuVien/web/css/bandocpage/style.css">
+    <link rel="stylesheet" href="./css/bandocpage/style.css">
 </head>
 <body>
 <!-- Page Content  -->
@@ -41,7 +41,7 @@
             </button>
         </div>
     </nav>
-    <h2 class="mb-4">Tìm tài liệu</h2>
+
     <div class="card-body">
         <div class="row mt-2 mb-2">
             <div class="col">
@@ -54,23 +54,25 @@
                 <label for="name">Ngày in </label>
                 <input type="text" class="form-control ml-2"
                        value="<%=LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))%>" disabled>
-                <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#savemodal"> Lưu
-                    phiếu mượn
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#exampleModal">
+                    Lưu phiếu mượn
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="savemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h2>Xác nhận</h2>
+                                <h5 class="modal-title" id="exampleModalLabel">Lưu phiếu mượn</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Chắc chắn lưu phiếu mượn?
+                                Bạn có chắc chắn lưu phiếu mượn?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
@@ -80,7 +82,7 @@
                     </div>
                 </div>
 
-                <!--                                  <a href="luuPhieuMuon" class="btn btn-primary mt-4">Lưu phiếu mượn</a>                                  -->
+<%--                <a href="luuPhieuMuon" class="btn btn-primary">Xác nhận</a>--%>
                 <a href="#" class="btn btn-secondary mt-4">In phiếu mượn</a>
             </div>
         </div>
@@ -110,9 +112,9 @@
     </div>
 </div>
 
-<script src="../../../../Java/QuanLyThuVien/web/js/bandocpage/jquery.min.js"></script>
-<script src="../../../../Java/QuanLyThuVien/web/js/bandocpage/popper.js"></script>
-<script src="../../../../Java/QuanLyThuVien/web/js/bandocpage/bootstrap.min.js"></script>
-<script src="../../../../Java/QuanLyThuVien/web/js/bandocpage/main.js"></script>
+<script src="./js/bandocpage/jquery.min.js"></script>
+<script src="./js/bandocpage/popper.js"></script>
+<script src="./js/bandocpage/bootstrap.min.js"></script>
+<script src="./js/bandocpage/main.js"></script>
 </body>
 </html>
