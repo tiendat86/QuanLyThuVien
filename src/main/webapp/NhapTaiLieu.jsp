@@ -85,7 +85,7 @@
 
                                     <form action="timNhaCungCap" method="get" style="display: inline">
                                         <div class="form-inline float-left">
-                                            <label for="name">Nhập mã nhà cung cấp </label>
+                                            <label for="name">Nhập tên nhà cung cấp </label>
                                             <input type="text" class="form-control ml-2" name="ten">
                                             <!--<input type="submit" value="Tìm kiếm" class="btn btn-primary" style="margin-left: 20px;">-->
                                             <button type="submit"

@@ -126,7 +126,6 @@
                             <div class="form-inline float-left">
                                 <label for="name">Nhập mã tài liệu </label>
                                 <input type="text" class="form-control ml-2" name="matailieu">
-                                <!--                                         <input type="submit" value="Tìm kiếm" class="btn btn-success" style="margin-left: 20px;">-->
                                 <button type="submit"
                                         style="margin-left: 16px; border: none;background-color: #fafafa;font-size: 24px;">
                                     <i class="fas fa-search"></i></button>
@@ -192,7 +191,7 @@
                                 <th>Tên tài liệu</th>
                                 <th>Tác giả</th>
                                 <th>Nhà xuất bản</th>
-
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -201,7 +200,9 @@
                                     <td>${tl.ten}</td>
                                     <td>${tl.tacgia}</td>
                                     <td>${tl.nxb}</td>
-
+                                    <td><a href="xoaTaiLieuChon?value=${tl.matl}">
+                                        <i class="fas fa-trash" style="color: red;"></i>
+                                    </a></td>
                                 </tr>
                             </c:forEach>
                             </tbody>

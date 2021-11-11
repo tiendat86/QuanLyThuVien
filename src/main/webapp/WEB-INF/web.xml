@@ -39,6 +39,10 @@
         <servlet-name>LuuPhieuTraServlet</servlet-name>
         <servlet-class>servlet.nvthuvien.LuuPhieuTraServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>XoaTaiLieuChonServlet</servlet-name>
+        <servlet-class>servlet.nvthuvien.XoaTaiLieuChonServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -74,6 +78,10 @@
     <servlet-mapping>
         <servlet-name>LuuPhieuTraServlet</servlet-name>
         <url-pattern>/luuPhieuTra</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>XoaTaiLieuChonServlet</servlet-name>
+        <url-pattern>/xoaTaiLieuChon</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
