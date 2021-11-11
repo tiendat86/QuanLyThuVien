@@ -1,6 +1,5 @@
 package dao;
 
-import model.PhieuMuon;
 import model.PhieuTra;
 
 import java.sql.PreparedStatement;

@@ -78,28 +78,28 @@
             </div>
             <br><span style="color: red; font-size: 13px">${nullTaiLieu}</span>
             <c:if test="${listTaiLieu.size()>0}">
-                <table class="table table-striped table-inverse">
-                    <thead class="thead-inverse">
+            <table class="table table-striped table-inverse">
+                <thead class="thead-inverse">
+                <tr>
+                    <th>Tên tài liệu</th>
+                    <th>Tác giả</th>
+                    <th>Nhà xuất bản</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="tailieu" items="${listTaiLieu}">
                     <tr>
-                        <th>Tên tài liệu</th>
-                        <th>Tác giả</th>
-                        <th>Nhà xuất bản</th>
-                        <th></th>
+                        <td>${tailieu.ten}</td>
+                        <td>${tailieu.tacgia}</td>
+                        <td>${tailieu.nxb}</td>
+                        <td>
+                            <a href="#" class="btn btn-outline-info"><i class="fas fa-info"></i></a>
+                        </td>
                     </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="tailieu" items="${listTaiLieu}">
-                        <tr>
-                            <td>${tailieu.ten}</td>
-                            <td>${tailieu.tacgia}</td>
-                            <td>${tailieu.nxb}</td>
-                            <td>
-                                <a href="#" class="btn btn-outline-info"><i class="fas fa-info"></i></a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
+                </c:forEach>
+                </tbody>
+            </table>
             </c:if>
         </div>
     </div>

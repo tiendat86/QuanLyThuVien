@@ -5,21 +5,24 @@ import model.NhaCungCap;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NhaCungCapDAO extends DAO {
-    public NhaCungCap getNhaCungCapTheoMa(String mancc) {
-        String sql = "select * frome nhacungcap where mancc = ?";
+    public List<NhaCungCap> getNhaCungCapTheoTen(String ten) {
+        List<NhaCungCap> list = new ArrayList<>();
+        String sql = "select * frome nhacungcap where ten like ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, mancc);
+            ps.setString(1, ten);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                return new NhaCungCap(mancc, rs.getString("ten"), rs.getString("diachi")
-                    , rs.getString("sdt"));
+                list.add(new NhaCungCap(rs.getString("mancc"), rs.getString("ten"), rs.getString("diachi")
+                    , rs.getString("sdt")));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return null;
+        return list;
     }
 }

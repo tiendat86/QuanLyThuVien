@@ -68,7 +68,7 @@ public class TimTheBanDocServlet extends HttpServlet {
             msg = "Không tìm thấy thẻ bạn đọc!";
         } else {
             LuotMuonDAO luotMuonDAO = new LuotMuonDAO();
-            List<LuotMuon> luotmuons = luotMuonDAO.getLuotMuonsTheoMaTheBD(tbd.getMathe());
+            List<LuotMuon> luotmuons = luotMuonDAO.getLuotMuonsChuaTraTheoMaTheBD(tbd.getMathe());
             session.setAttribute("luotmuons", luotmuons);
         }
         request.setAttribute("msg", msg);
