@@ -118,7 +118,7 @@
                 <c:when test="${thebandoc != null}">
                     <br>
                     <!--Hiển thị tài liệu mượn-->
-                    <form action="">
+                    <form action="chonTaiLieuTra" method="post">
                         <table class="table table-striped table-inverse mt-2">
                             <thead class="thead-inverse">
                             <tr>
@@ -134,15 +134,16 @@
 
                             <c:forEach var="luotmuon" items="${luotmuons}">
                                 <tr>
-                                    <td><input type="checkbox" name="tras"></td>
+                                    <td><input type=checkbox name="tratailieus" value="${luotmuon.taiLieu.matl}"></td>
                                     <td>${luotmuon.taiLieu.ten}</td>
                                     <td>${luotmuon.taiLieu.tacgia}</td>
                                     <td>${luotmuon.taiLieu.nxb}</td>
-                                    <td><input type="text" name="tinhtrangs">%</td>
+                                    <td><input type="number" name="tinhtrangs" min="0" max="100">%</td>
                                 </tr>
                             </c:forEach>
                             </tbody>
                         </table>
+                        <input type="submit" value="Xác nhận" class="btn btn-success mt-2 mb-4 float-right">
                     </form>
                 </c:when>
             </c:choose>

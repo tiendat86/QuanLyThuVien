@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Date;
  * @author Tien Dat
  */
 public class LuotTra implements Serializable {
-    private Date ngaytra;
+    private LocalDate ngaytra;
     private String mota;
     private float tienphat;
     private int tonthat;
@@ -22,14 +23,14 @@ public class LuotTra implements Serializable {
     public LuotTra() {
     }
 
-    public LuotTra(Date ngaytra, String mota, float tienphat, int tonthat) {
+    public LuotTra(LocalDate ngaytra, String mota, float tienphat, int tonthat) {
         this.ngaytra = ngaytra;
         this.mota = mota;
         this.tienphat = tienphat;
         this.tonthat = tonthat;
     }
 
-    public LuotTra(Date ngaytra, String mota, float tienphat, int tonthat, LuotMuon luotMuon) {
+    public LuotTra(LocalDate ngaytra, String mota, float tienphat, int tonthat, LuotMuon luotMuon) {
         this.ngaytra = ngaytra;
         this.mota = mota;
         this.tienphat = tienphat;
@@ -45,11 +46,11 @@ public class LuotTra implements Serializable {
         this.luotMuon = luotMuon;
     }
 
-    public Date getNgaytra() {
+    public LocalDate getNgaytra() {
         return ngaytra;
     }
 
-    public void setNgaytra(Date ngaytra) {
+    public void setNgaytra(LocalDate ngaytra) {
         this.ngaytra = ngaytra;
     }
 

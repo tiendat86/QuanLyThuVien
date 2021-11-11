@@ -20,12 +20,24 @@
         <servlet-class>servlet.nvthuvien.TimTheBanDocServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>TimNhaCungCapServlet</servlet-name>
+        <servlet-class>servlet.nvthuvien.TimNhaCungCapServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ChonTaiLieuMuonServlet</servlet-name>
         <servlet-class>servlet.nvthuvien.ChonTaiLieuMuonServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ChonTaiLieuTraServlet</servlet-name>
+        <servlet-class>servlet.nvthuvien.ChonTaiLieuTraServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>LuuPhieuMuonServlet</servlet-name>
         <servlet-class>servlet.nvthuvien.LuuPhieuMuonServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LuuPhieuTraServlet</servlet-name>
+        <servlet-class>servlet.nvthuvien.LuuPhieuTraServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -44,12 +56,24 @@
         <url-pattern>/timTheBanDoc</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>TimNhaCungCapServlet</servlet-name>
+        <url-pattern>/timNhaCungCap</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ChonTaiLieuMuonServlet</servlet-name>
         <url-pattern>/chonTaiLieuMuon</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>ChonTaiLieuTraServlet</servlet-name>
+        <url-pattern>/chonTaiLieuTra</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>LuuPhieuMuonServlet</servlet-name>
         <url-pattern>/luuPhieuMuon</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LuuPhieuTraServlet</servlet-name>
+        <url-pattern>/luuPhieuTra</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

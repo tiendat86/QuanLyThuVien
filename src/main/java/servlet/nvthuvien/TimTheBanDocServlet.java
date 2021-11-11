@@ -8,7 +8,6 @@ package servlet.nvthuvien;
 import dao.LuotMuonDAO;
 import dao.TheBanDocDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,14 +36,16 @@ public class TimTheBanDocServlet extends HttpServlet {
         String ma = request.getParameter("mathe");
         TheBanDocDAO tbddao = new TheBanDocDAO();
         TheBanDoc tbd = tbddao.getTheBanDocTheoMa(ma);
+        String msg = "";
         if(tbd == null) {
-            session.setAttribute("msg", "Không tìm thấy thẻ bạn đọc!");
+            msg = "Không tìm thấy thẻ bạn đọc!";
         }
         List<TaiLieu> list = (List<TaiLieu>) session.getAttribute("tailieus");
         if(list != null) {
             list.removeAll(list);
             session.setAttribute("tailieus", list);
         }
+        request.setAttribute("msg", msg);
         session.setAttribute("thebandoc", tbd);     
         String url = "/MuonTaiLieu.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
@@ -62,13 +63,15 @@ public class TimTheBanDocServlet extends HttpServlet {
         String ma = request.getParameter("mathe");
         TheBanDocDAO tbddao = new TheBanDocDAO();
         TheBanDoc tbd = tbddao.getTheBanDocTheoMa(ma);
+        String msg = "";
         if(tbd == null) {
-            session.setAttribute("msg", "Không tìm thấy thẻ bạn đọc!");
+            msg = "Không tìm thấy thẻ bạn đọc!";
         } else {
             LuotMuonDAO luotMuonDAO = new LuotMuonDAO();
             List<LuotMuon> luotmuons = luotMuonDAO.getLuotMuonsTheoMaTheBD(tbd.getMathe());
-            request.setAttribute("luotmuons", luotmuons);
+            session.setAttribute("luotmuons", luotmuons);
         }
+        request.setAttribute("msg", msg);
         session.setAttribute("thebandoc", tbd);
         String url = "/TraTaiLieu.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);

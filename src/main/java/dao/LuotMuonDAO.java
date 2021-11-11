@@ -39,7 +39,7 @@ public class LuotMuonDAO extends DAO {
             
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(TheBanDocDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LuotMuonDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -52,13 +52,13 @@ public class LuotMuonDAO extends DAO {
                 return rs.getInt(1);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PhieuMuonDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LuotMuonDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }
 
-    public List<LuotMuon> getLuotMuonsTheoMaTheBD(String ma) {
-        String sql = "select * from luotmuon where mathebandoc = ?";
+    public List<LuotMuon> getLuotMuonsChuaTraTheoMaTheBD(String ma) {
+        String sql = "select * from luotmuon where mathebandoc = ? and id not in (select idluotmuon from luottra);";
         List<LuotMuon> list = new ArrayList<>();
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
