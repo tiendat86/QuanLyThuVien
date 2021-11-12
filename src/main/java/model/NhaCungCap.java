@@ -12,23 +12,24 @@ import java.io.Serializable;
  * @author Tien Dat
  */
 public class NhaCungCap implements Serializable {
-    private String mancc, ten, diachi, sdt;
+    private int mancc;
+    private String ten, diachi, sdt;
 
     public NhaCungCap() {
     }
 
-    public NhaCungCap(String mancc, String ten, String diachi, String sdt) {
+    public NhaCungCap(int mancc, String ten, String diachi, String sdt) {
         this.mancc = mancc;
         this.ten = ten;
         this.diachi = diachi;
         this.sdt = sdt;
     }
 
-    public String getMancc() {
+    public int getMancc() {
         return mancc;
     }
 
-    public void setMancc(String mancc) {
+    public void setMancc(int mancc) {
         this.mancc = mancc;
     }
 

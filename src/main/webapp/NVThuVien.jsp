@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +37,7 @@
                 </li>
 
                 <li>
-                    <a href="NhapTaiLieu.jsp">Nhập tài liệu</a>
+                    <a href="TimNCC.jsp">Nhập tài liệu</a>
                 </li>
                 <li>
                     <a href="index.jsp" class="btn btn-success mt-4">Đăng xuất</a>
@@ -69,6 +70,30 @@
         <p>SĐT: 0875628498</p>
     </div>
 </div>
+
+<c:if test="${not empty luuHoaDonsuccess}">
+    <script>
+        window.addEventListener("load",function(){
+            alert("${luuHoaDonsuccess}")
+        });
+    </script>
+</c:if>
+
+<c:if test="${not empty luuPhieuMuonsuccess}">
+    <script>
+        window.addEventListener("load",function(){
+            alert("${luuPhieuMuonsuccess}")
+        });
+    </script>
+</c:if>
+
+<c:if test="${not empty luuPhieuTrasuccess}">
+    <script>
+        window.addEventListener("load",function(){
+            alert("${luuPhieuTrasuccess}")
+        });
+    </script>
+</c:if>
 
 <script src="./js/bandocpage/jquery.min.js"></script>
 <script src="./js/bandocpage/popper.js"></script>

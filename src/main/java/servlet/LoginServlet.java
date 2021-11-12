@@ -10,6 +10,7 @@ import dao.NVQuanLiDAO;
 import dao.NVThuVienDAO;
 import dao.NguoiDungDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +36,10 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String tentaikhoan = request.getParameter("tentaikhoan");        
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        String tentaikhoan = request.getParameter("tentaikhoan");
         String matkhau = request.getParameter("matkhau");
         NguoiDung nguoidung = (NguoiDung) request.getAttribute("nguoidung");
         NguoiDungDAO nguoiDungDAO = new NguoiDungDAO();
@@ -64,12 +68,11 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("quanli", ql);
                 url = "/NVQuanLi.jsp";
             } else {
-                  msg = "Nhập sai tên tài khoản hoặc mật khẩu";
-                  url = "/index.jsp";
+                msg = "Nhập sai tên tài khoản hoặc mật khẩu";
+                url = "/index.jsp";
             }
         }
         request.setAttribute("nullLogin", msg);
-        
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }

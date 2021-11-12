@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -17,13 +18,13 @@ public class LuotNhap implements Serializable {
     private TaiLieu tailieu;
     private int soluong;
     private float gia;
-    private Date ngaynhap;
+    private LocalDate ngaynhap;
     private int id;
 
     public LuotNhap() {
     }
 
-    public LuotNhap(NhaCungCap ncc, TaiLieu tailieu, int soluong, float gia, Date ngaynhap) {
+    public LuotNhap(NhaCungCap ncc, TaiLieu tailieu, int soluong, float gia, LocalDate ngaynhap) {
         this.ncc = ncc;
         this.tailieu = tailieu;
         this.soluong = soluong;
@@ -31,7 +32,7 @@ public class LuotNhap implements Serializable {
         this.ngaynhap = ngaynhap;
     }
 
-    public LuotNhap(NhaCungCap ncc, TaiLieu tailieu, int soluong, float gia, Date ngaynhap, int id) {
+    public LuotNhap(NhaCungCap ncc, TaiLieu tailieu, int soluong, float gia, LocalDate ngaynhap, int id) {
         this.ncc = ncc;
         this.tailieu = tailieu;
         this.soluong = soluong;
@@ -72,11 +73,11 @@ public class LuotNhap implements Serializable {
         this.gia = gia;
     }
 
-    public Date getNgaynhap() {
+    public LocalDate getNgaynhap() {
         return ngaynhap;
     }
 
-    public void setNgaynhap(Date ngaynhap) {
+    public void setNgaynhap(LocalDate ngaynhap) {
         this.ngaynhap = ngaynhap;
     }
 

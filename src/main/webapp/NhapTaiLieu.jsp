@@ -27,112 +27,102 @@
 </head>
 <body>
 <div class="wrapper d-flex align-items-stretch">
-    <nav id="sidebar">
-        <div class="p-4 pt-5">
-            <a href="NVThuVien.jsp" class="img logo rounded-circle mb-5"
-               style="background-image: url(./images/bandocpage/logo.jpg);margin-bottom: 16px !important;"></a>
-            <span style="text-align: center;display: flex;justify-content: center; margin-bottom: 48px;">${nhanvien.getNguoiDung().getTen()}</span>
-
-            <ul class="list-unstyled components mb-5">
-                <li>
-                    <a href="MuonTaiLieu.jsp">Mượn tài liệu</a>
-                </li>
-                <li>
-                    <a href="TraTaiLieu.jsp">Trả tài liệu</a>
-                </li>
-                <li>
-                    <a href="NhapTaiLieu.jsp">Nhập tài liệu</a>
-                </li>
-                <li>
-                    <a href="index.jsp" class="btn btn-success mt-4">Đăng xuất</a>
-                </li>
-            </ul>
-
-        </div>
-    </nav>
 
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5">
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-
-                <button type="button" id="sidebarCollapse" class="btn btn-primary">
-                    <i class="fa fa-bars"></i>
-                    <span class="sr-only">Toggle Menu</span>
-                </button>
-                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
-            </div>
-        </nav>
-        <div class="card-body">
-
-            <div class="row mb-5">
-                <div class="col-2"></div>
-                <div class="col-8">
-                    <div id="accordion">
-                        <div class="card">
-                            <div class="card-header" id="headingTwo" style="display: flex; justify-content: center;">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse"
-                                            data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"
-                                            style="margin-left: 40px;">
-                                        <i class="fas fa-arrow-circle-down" style="font-size: 28px;"></i>
-                                    </button>
-
-                                    <form action="timNhaCungCap" method="get" style="display: inline">
-                                        <div class="form-inline float-left">
-                                            <label for="name">Nhập tên nhà cung cấp </label>
-                                            <input type="text" class="form-control ml-2" name="ten">
-                                            <!--<input type="submit" value="Tìm kiếm" class="btn btn-primary" style="margin-left: 20px;">-->
-                                            <button type="submit"
-                                                    style="margin-left: 16px; border: none;background-color: #fafafa;font-size: 24px;">
-                                                <i class="fas fa-search"></i></button>
-                                        </div>
-                                    </form>
-
-<%--                                    <c:if test="${msg != ''}">--%>
-<%--                                        <span style="color: red">${msg}</span>--%>
-<%--                                    </c:if>--%>
-                                </h5>
-                            </div>
+        <div class="row">
+            <div class="col-5">
+                <h5 class="mb-0">
+                    <form action="timTaiLieuNhap" method="post" style="display: inline">
+                        <div class="form-inline float-left">
+                            <label for="name">Nhập mã tài liệu </label>
+                            <input type="text" class="form-control ml-2" name="matailieu">
+                            <button type="submit"
+                                    style="margin-left: 16px; border: none;background-color: #fafafa;font-size: 24px;">
+                                <i class="fas fa-search"></i></button>
+                            <a href="ThemTaiLieu.jsp" class="btn btn-outline-info">Thêm tài liệu</a>
                         </div>
+                    </form>
+                </h5>
 
-                        <br><span style="color: red; font-size: 13px">${nullNcc}</span>
-                        <c:if test="${nccs.size()>0}">
-                            <table class="table table-striped table-inverse">
-                                <thead class="thead-inverse">
-                                <tr>
-                                    <th>Tên tài liệu</th>
-                                    <th>Tác giả</th>
-                                    <th>Nhà xuất bản</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach var="ncc" items="${nccs}">
-                                    <tr>
-                                        <td>${ncc.ten}</td>
-                                        <td>${ncc.diachi}</td>
-                                        <td>${ncc.sdt}</td>
-                                        <td>
-                                            <a href="#" class="btn btn-outline-info"><i class="fas fa-info"></i></a>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
-                        </c:if>
+                <br>
+                <span style="color: red">${msg2}</span>
+
+                <c:if test="${tailieu != null}">
+                    <div style="margin-top: 36px;">
+
+                        <table class="table table-striped table-inverse">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th></th>
+                                <th>Tên tài liệu</th>
+                                <th>Tác giả</th>
+                                <th>Nhà xuất bản</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <a href="<%=request.getContextPath()%>/timTaiLieuNhap" class="">
+                                        <i class="fas fa-plus-circle" style="font-size: 24px;"></i></a>
+                                </td>
+                                <td>${tailieu.ten}</td>
+                                <td>${tailieu.tacgia}</td>
+                                <td>${tailieu.nxb}</td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-            </div>
 
+                    <span style="color: red">${msg3}</span>
+                </c:if>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-6">
+                <!--<div class="row mt-2 mb-2">-->
+                <form action="luuHoaDon" method="post" style="display: inline">
+                    <br>
+
+                    <!--</div>-->
+
+                    <table class="table table-striped table-inverse mt-2">
+                        <thead class="thead-inverse">
+                        <tr>
+                            <th class="col-4">Tên tài liệu</th>
+                            <th class="col-3">Tác giả</th>
+                            <th class="col-3">Nhà xuất bản</th>
+                            <th class="col-1">Số lượng</th>
+                            <th class="col-1">Đơn giá</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="tl" items="${tailieus}">
+                            <tr>
+                                <td>${tl.ten}</td>
+                                <td>${tl.tacgia}</td>
+                                <td>${tl.nxb}</td>
+                                <td><input type="number" name="soluongs" min="1"
+                                                         style="border: none; width: 102px;"></td>
+                                <td><input type="number" name="dongias" value="${tl.gia}"
+                                                         style="border: none; width: 150px"></td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                    <input type="submit" value="Xác nhận" class="btn btn-success mt-2 mb-4 float-right">
+                </form>
+            </div>
         </div>
     </div>
 </div>
+
+<c:if test="${not empty addTLSuccess}">
+    <script>
+        window.addEventListener("load",function(){
+            alert("${addTLSuccess}")
+        });
+    </script>
+</c:if>
 
 <script src="./js/bandocpage/jquery.min.js"></script>
 <script src="./js/bandocpage/popper.js"></script>

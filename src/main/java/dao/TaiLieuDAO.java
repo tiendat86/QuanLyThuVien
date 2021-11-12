@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import model.NhaCungCap;
 import model.TaiLieu;
 
 /**
@@ -64,6 +66,24 @@ public class TaiLieuDAO extends DAO {
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(TaiLieuDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void themTaiLieu(TaiLieu tl) {
+        String sql = "INSERT INTO `qlthuvien`.`tailieu` (`matailieu`, `ten`, `gia`, `nxb`, `soluong`, `tacgia`) " +
+                "VALUES (?,?,?,?,?,?)";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, tl.getMatl());
+            ps.setString(2, tl.getTen());
+            ps.setFloat(3, tl.getGia());
+            ps.setString(4, tl.getNxb());
+            ps.setInt(5, tl.getSoluong());
+            ps.setString(6, tl.getTacgia());
+
+            ps.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 }

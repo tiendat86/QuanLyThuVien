@@ -77,79 +77,65 @@
                         <div class="card">
                             <div class="card-header" id="headingTwo" style="display: flex; justify-content: center;">
                                 <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse"
-                                            data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"
-                                            style="margin-left: 40px;">
-                                        <i class="fas fa-arrow-circle-down" style="font-size: 28px;"></i>
-                                    </button>
 
-                                    <form action="timTheBanDoc" method="post" style="display: inline">
+                                    <form action="timNhaCungCap" method="post" style="display: inline">
                                         <div class="form-inline float-left">
-                                            <label for="name">Nhập mã thẻ bạn đọc </label>
-                                            <input type="text" class="form-control ml-2" name="mathe">
+                                            <label>Nhập tên nhà cung cấp </label>
+                                            <input type="text" class="form-control ml-2" name="ten">
                                             <!--<input type="submit" value="Tìm kiếm" class="btn btn-primary" style="margin-left: 20px;">-->
-                                            <button type="submit"
-                                                    style="margin-left: 16px; border: none;background-color: #fafafa;font-size: 24px;">
+                                            <button type="submit" style="margin-left: 16px; border: none;background-color: #fafafa;font-size: 24px;">
                                                 <i class="fas fa-search"></i></button>
+                                            <a href="ThemNCC.jsp" class="btn btn-outline-info">Thêm nhà cung cấp</a>
                                         </div>
                                     </form>
+
+<%--                                    <c:if test="${msg != ''}">--%>
+<%--                                        <span style="color: red">${msg}</span>--%>
+<%--                                    </c:if>--%>
                                 </h5>
                             </div>
                         </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                            <div class="card-body" style="font-size: 16px; font-weight: 600; margin-left: 100px">
-                                <span>Tên: ${thebandoc.banDoc.nguoiDung.ten} </span><br>
-                                <span> SĐT: ${thebandoc.banDoc.nguoiDung.sdt} </span><br>
-                                <span>Ngày sinh: ${thebandoc.banDoc.nguoiDung.ngaysinh} </span><br>
-                                <span>Địa chỉ: ${thebandoc.banDoc.nguoiDung.diachi} </span><br>
-                            </div>
-                        </div>
+
+                        <br><span style="color: red; font-size: 13px">${nullNcc}</span>
+                        <c:if test="${nccs.size()>0}">
+                            <table class="table table-striped table-inverse">
+                                <thead class="thead-inverse">
+                                <tr>
+                                    <th>Tên tài liệu</th>
+                                    <th>Tác giả</th>
+                                    <th>Nhà xuất bản</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="ncc" items="${nccs}">
+                                    <tr>
+                                        <td>${ncc.ten}</td>
+                                        <td>${ncc.diachi}</td>
+                                        <td>${ncc.sdt}</td>
+                                        <td>
+                                            <a href="timNhaCungCap?value=${ncc.mancc}"><i class="fas fa-check-circle"></i></a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                        </c:if>
                     </div>
                 </div>
             </div>
 
-            <c:choose>
-                <c:when test="${thebandoc == null}">
-                    <div class="card-body" style="text-align: center; color: red;">
-                            ${msg}
-                    </div>
-                </c:when>
-
-                <c:when test="${thebandoc != null}">
-                    <br>
-                    <!--Hiển thị tài liệu mượn-->
-                    <form action="chonTaiLieuTra" method="post">
-                        <table class="table table-striped table-inverse mt-2">
-                            <thead class="thead-inverse">
-                            <tr>
-                                <th col-1></th>
-                                <th>Tên tài liệu</th>
-                                <th>Tác giả</th>
-                                <th>Nhà xuất bản</th>
-                                <th col-2>Tình trạng tài liệu</th>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-
-                            <c:forEach var="luotmuon" items="${luotmuons}">
-                                <tr>
-                                    <td><input type=checkbox name="tratailieus" value="${luotmuon.taiLieu.matl}"></td>
-                                    <td>${luotmuon.taiLieu.ten}</td>
-                                    <td>${luotmuon.taiLieu.tacgia}</td>
-                                    <td>${luotmuon.taiLieu.nxb}</td>
-                                    <td><input type="number" name="tinhtrangs" min="0" max="100">%</td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
-                        <input type="submit" value="Xác nhận" class="btn btn-success mt-2 mb-4 float-right">
-                    </form>
-                </c:when>
-            </c:choose>
         </div>
     </div>
 </div>
+
+<c:if test="${not empty addNccSuccess}">
+    <script>
+        window.addEventListener("load",function(){
+            alert("${addNccSuccess}")
+        });
+    </script>
+</c:if>
 
 <script src="./js/bandocpage/jquery.min.js"></script>
 <script src="./js/bandocpage/popper.js"></script>

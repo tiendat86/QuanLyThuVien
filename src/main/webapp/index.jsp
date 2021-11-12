@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +39,14 @@
                     <input class="input100" type="password" name="matkhau" placeholder="Password">
                 </div>
                 <div class="container-login100-form-btn">
-                    <span style="color: red; font-size: 13px">${nullLogin}</span>
+<%--                    <span style="color: red; font-size: 13px">${nullLogin}</span>--%>
+                    <c:if test="${not empty nullLogin}">
+                        <script>
+                            window.addEventListener("load",function(){
+                                alert("${nullLogin}")
+                            });
+                        </script>
+                    </c:if>
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
                         <button class="login100-form-btn">

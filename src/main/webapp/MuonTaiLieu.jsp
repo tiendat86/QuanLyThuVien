@@ -41,7 +41,7 @@
                     <a href="TraTaiLieu.jsp">Trả tài liệu</a>
                 </li>
                 <li>
-                    <a href="NhapTaiLieu.jsp">Nhập tài liệu</a>
+                    <a href="TimNCC.jsp">Nhập tài liệu</a>
                 </li>
                 <li>
                     <a href="index.jsp" class="btn btn-success mt-4">Đăng xuất</a>

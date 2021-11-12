@@ -49,6 +49,7 @@ public class LuuPhieuMuonServlet extends HttpServlet {
             lmdao.luuLuotMuon(luotmuon, phieumuon);
             tldao.updateSoLuongTaiLieu(luotmuon.getTaiLieu().getMatl(), luotmuon.getTaiLieu().getSoluong() - 1);
         }
+        session.setAttribute("luuPhieuMuonsuccess", "Bạn đã lưu phiếu mượn thành công!");
         String url = "/NVThuVien.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
