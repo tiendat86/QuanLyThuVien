@@ -21,6 +21,7 @@ public class TimNhaCungCapServlet extends HttpServlet {
         NhaCungCap ncc = new NhaCungCapDAO().getNhaCungCapTheoMa(request.getParameter("value"));
         session.setAttribute("nhacungcap", ncc);
         String url = "/NhapTaiLieu.jsp";
+        session.setAttribute("addNccSuccess", "");
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
@@ -41,6 +42,7 @@ public class TimNhaCungCapServlet extends HttpServlet {
         }
         request.setAttribute("nullNcc", nullNcc);
         request.setAttribute("nccs", nccs);
+        session.setAttribute("addNccSuccess", "");
         String url = "/TimNCC.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);

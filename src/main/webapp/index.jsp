@@ -39,14 +39,8 @@
                     <input class="input100" type="password" name="matkhau" placeholder="Password">
                 </div>
                 <div class="container-login100-form-btn">
-<%--                    <span style="color: red; font-size: 13px">${nullLogin}</span>--%>
-                    <c:if test="${not empty nullLogin}">
-                        <script>
-                            window.addEventListener("load",function(){
-                                alert("${nullLogin}")
-                            });
-                        </script>
-                    </c:if>
+                    <span style="color: red; font-size: 13px">${nullLogin}</span>
+
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
                         <button class="login100-form-btn">
@@ -60,6 +54,14 @@
 </div>
 
 <div id="dropDownSelect1"></div>
+
+<%--<c:if test="${not empty nullLogin}">--%>
+<%--    <script>--%>
+<%--        window.addEventListener("load",function(){--%>
+<%--            alert("${nullLogin}")--%>
+<%--        });--%>
+<%--    </script>--%>
+<%--</c:if>--%>
 
 <script src="./js/bootstrap/bootstrap.min.js"></script>
 <script src="./js/login/main.js"></script>

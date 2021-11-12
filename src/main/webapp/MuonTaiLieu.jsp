@@ -145,6 +145,7 @@
                                     <th>Tên tài liệu</th>
                                     <th>Tác giả</th>
                                     <th>Nhà xuất bản</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -156,6 +157,45 @@
                                     <td>${tailieu.ten}</td>
                                     <td>${tailieu.tacgia}</td>
                                     <td>${tailieu.nxb}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-info" data-toggle="modal"
+                                                data-target="#${tailieu.matl}" style="font-size: 12px;">
+                                            <i class="fas fa-info"></i>
+                                        </button>
+
+                                        <div class="modal fade" id="${tailieu.matl}" tabindex="-1" role="dialog"
+                                             aria-labelledby="exampleModalLabel"
+                                             aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">${tailieu.ten}</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body" style="font-size: 18px;">
+                                                        <span>Mã: ${tailieu.matl}</span>
+                                                        <span>Tác giả: ${tailieu.tacgia}</span><br>
+                                                        <span class="float-right">Tên: ${tailieu.ten}</span>
+                                                        <span class="float-right">NXB: ${tailieu.nxb}</span><br>
+                                                        <span>Giá: ${tailieu.gia}</span>
+                                                        <span class="float-right">Số lượng: ${tailieu.soluong}</span><br>
+                                                        <span style="display: flex; justify-content: center;">
+                                                    <img src="${tailieu.anh}" width="200" height="333" />
+                                                </span>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                            Quay lại
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <%-- End Modal--%>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -201,7 +241,7 @@
                                     <td>${tl.tacgia}</td>
                                     <td>${tl.nxb}</td>
                                     <td><a href="xoaTaiLieuChon?value=${tl.matl}">
-                                        <i class="fas fa-trash" style="color: red;"></i>
+                                        <i class="fas fa-trash" style="font-size: 16px;color: red;"></i>
                                     </a></td>
                                 </tr>
                             </c:forEach>

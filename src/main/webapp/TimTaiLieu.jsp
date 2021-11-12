@@ -94,12 +94,12 @@
                             <td>${tailieu.tacgia}</td>
                             <td>${tailieu.nxb}</td>
                             <td>
-                                <button type="button" class="btn btn-primary mt-4" data-toggle="modal"
-                                        data-target="#exampleModal">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#${tailieu.matl}">
                                     <i class="fas fa-info"></i>
                                 </button>
 
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="${tailieu.matl}" tabindex="-1" role="dialog"
                                      aria-labelledby="exampleModalLabel"
                                      aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -108,13 +108,13 @@
                                                 <h5 class="modal-title" id="exampleModalLabel">${tailieu.ten}</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
+                                                    <span aria-hidden="true">&times</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body" style="font-size: 18px;">
                                                 <span>Mã: ${tailieu.matl}</span>
-                                                <span class="float-right">Tên: ${tailieu.ten}</span><br>
-                                                <span>Tác giả: ${tailieu.tacgia}</span>
+                                                <span>Tác giả: ${tailieu.tacgia}</span><br>
+                                                <span class="float-right">Tên: ${tailieu.ten}</span>
                                                 <span class="float-right">NXB: ${tailieu.nxb}</span><br>
                                                 <span>Giá: ${tailieu.gia}</span>
                                                 <span class="float-right">Số lượng: ${tailieu.soluong}</span><br>
