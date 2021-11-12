@@ -6,6 +6,7 @@
 package servlet.nvthuvien;
 
 import dao.TaiLieuDAO;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,33 +16,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import model.TaiLieu;
 
 /**
- *
  * @author dangt
  */
 public class ChonTaiLieuMuonServlet extends HttpServlet {
     List<TaiLieu> list = new ArrayList<>();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         request.setCharacterEncoding("UTF-8");        
+        request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         HttpSession session = request.getSession();
         TaiLieu tailieu = (TaiLieu) session.getAttribute("tailieu");
         String msg = "";
-        if(list.size() > 0) {
-                for(TaiLieu tl : list) {
-                if(tl.getMatl().equals(tailieu.getMatl())) {
+        if (list.size() > 0) {
+            for (TaiLieu tl : list) {
+                if (tl.getMatl().equals(tailieu.getMatl())) {
                     msg = "Tài liệu này đã được thêm";
                     break;
                 }
             }
         }
-        
-        if(msg.equals("")) {
+
+        if (msg.equals("")) {
             list.add(tailieu);
         }
         request.setAttribute("msg3", msg);
@@ -54,11 +56,11 @@ public class ChonTaiLieuMuonServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");        
+        request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         HttpSession session = request.getSession();
-         TaiLieuDAO taiLieuDAO = new TaiLieuDAO();
+        TaiLieuDAO taiLieuDAO = new TaiLieuDAO();
         String ma = request.getParameter("matailieu");
         TaiLieu tailieu = taiLieuDAO.getTaiLieuTheoMa(ma);
         String msg2 = "";

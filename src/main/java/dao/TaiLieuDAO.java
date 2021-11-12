@@ -31,8 +31,9 @@ public class TaiLieuDAO extends DAO {
             ps.setString(1, "%" + ten + "%");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new TaiLieu(rs.getString("matailieu"), rs.getString("ten"), rs.getFloat("gia"), 
-                        rs.getString("tacgia"),rs.getString("nxb"), rs.getInt("soluong")));               
+                list.add(new TaiLieu(rs.getString("matailieu"), rs.getString("ten"),
+                        rs.getFloat("gia"), rs.getString("tacgia"),rs.getString("nxb")
+                        , rs.getInt("soluong"), rs.getString("anh")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(TaiLieuDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -47,7 +48,9 @@ public class TaiLieuDAO extends DAO {
             ps.setString(1, ma);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {                
-                return new TaiLieu(ma, rs.getString("ten"), rs.getFloat("gia"), rs.getString("tacgia"), rs.getString("nxb"), rs.getInt("soluong"));
+                return new TaiLieu(ma, rs.getString("ten"), rs.getFloat("gia"),
+                        rs.getString("tacgia"), rs.getString("nxb"),
+                        rs.getInt("soluong"), rs.getString("anh"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(TaiLieuDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -69,23 +72,9 @@ public class TaiLieuDAO extends DAO {
         }
     }
 
-    public void updateGiaTaiLieu(String ma, float gia) {
-        String sql = "UPDATE `qlthuvien`.`tailieu` SET `gia` = ? WHERE (`matailieu` = ?);";
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setFloat(1, gia);
-            ps.setString(2, ma);
-            ps.executeUpdate();
-
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(TaiLieuDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     public void themTaiLieu(TaiLieu tl) {
-        String sql = "INSERT INTO `qlthuvien`.`tailieu` (`matailieu`, `ten`, `gia`, `nxb`, `soluong`, `tacgia`) " +
-                "VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO `qlthuvien`.`tailieu` (`matailieu`, `ten`, `gia`, `nxb`, `soluong`, `tacgia`, `anh`) " +
+                "VALUES (?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, tl.getMatl());
@@ -94,6 +83,7 @@ public class TaiLieuDAO extends DAO {
             ps.setString(4, tl.getNxb());
             ps.setInt(5, tl.getSoluong());
             ps.setString(6, tl.getTacgia());
+            ps.setString(7, tl.getAnh());
 
             ps.executeUpdate();
         } catch (SQLException throwables) {

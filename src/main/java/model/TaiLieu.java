@@ -15,6 +15,7 @@ public class TaiLieu implements Serializable {
     private String matl, ten, tacgia, nxb;
     private int soluong;
     private float gia;
+    private String anh;
 
     public TaiLieu() {
     }
@@ -28,8 +29,26 @@ public class TaiLieu implements Serializable {
         this.soluong = soluong;
     }
 
+    public TaiLieu(String matl, String ten, float gia, String tacgia, String nxb, int soluong, String anh) {
+        this.matl = matl;
+        this.ten = ten;
+        this.tacgia = tacgia;
+        this.nxb = nxb;
+        this.soluong = soluong;
+        this.gia = gia;
+        this.anh = anh;
+    }
+
     public TaiLieu(String string, String string0, float aFloat) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String getAnh() {
+        return anh;
+    }
+
+    public void setAnh(String anh) {
+        this.anh = anh;
     }
 
     public String getTacgia() {
