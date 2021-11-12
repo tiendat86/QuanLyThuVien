@@ -13,15 +13,16 @@ import java.util.logging.Logger;
 public class LuotTraDAO extends DAO {
 
     public void luuLuotTra(LuotTra luotTra, PhieuTra phieuTra) {
-        String sql = "INSERT INTO `qlthuvien`.`luottra` (`idluotmuon`, `ngaytra`, `tonthat`, `mota`, `idphieutra`)" +
-                " VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO `qlthuvien`.`luottra` (`idluotmuon`, `ngaytra`, `tonthat`, `tienphat`, `mota`, `idphieutra`)" +
+                " VALUES (?,?,?,?,?, ?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, luotTra.getLuotMuon().getId());
             ps.setDate(2, Date.valueOf(luotTra.getNgaytra()));
             ps.setInt(3, luotTra.getTonthat());
-            ps.setString(4, luotTra.getMota());
-            ps.setInt(5, phieuTra.getId());
+            ps.setFloat(4, luotTra.getTienphat());
+            ps.setString(5, luotTra.getMota());
+            ps.setInt(6, phieuTra.getId());
 
             ps.executeUpdate();
         } catch (SQLException ex) {

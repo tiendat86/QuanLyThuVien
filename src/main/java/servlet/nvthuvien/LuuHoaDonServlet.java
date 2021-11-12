@@ -35,6 +35,8 @@ public class LuuHoaDonServlet extends HttpServlet {
                     luotnhaps.get(i).getTailieu().getSoluong() + luotnhaps.get(i).getSoluong());
         }
         session.setAttribute("luuHoaDonsuccess", "Bạn đã lưu hóa đơn thành công!");
+        session.setAttribute("luuPhieuTrasuccess", "");
+        session.setAttribute("luuPhieuMuonsuccess", "");
         String url = "/NVThuVien.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
@@ -62,8 +64,7 @@ public class LuuHoaDonServlet extends HttpServlet {
             tongtien +=  Float.parseFloat(dongias[i]) * Integer.parseInt(soluongs[i]);
             tongsoluong += Integer.parseInt(soluongs[i]);
             luotnhaps.add(new LuotNhap(ncc, tailieus.get(i), Integer.parseInt(soluongs[i]),
-                    Float.parseFloat(dongias[i]) * Integer.parseInt(soluongs[i]),
-                    LocalDate.now(), inc));
+                    Float.parseFloat(dongias[i]), LocalDate.now(), inc));
             inc++;
         }
 

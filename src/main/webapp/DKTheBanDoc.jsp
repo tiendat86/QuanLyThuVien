@@ -68,21 +68,18 @@
 
             <div class="card-body">
                 <div class="mt-2 mb-2">
-                    <form class="form-horizontal">
+                    <form action="luuTheBanDoc" method="post" class="form-horizontal" >
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="lname">Mã Thẻ</label>
                             <div class="col-md-4">
                                 <input id="lname" name="mathe" type="text" class="form-control input-md" required="">
-
                             </div>
                         </div>
-
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="email">Loại thẻ</label>
                             <div class="col-md-4">
                                 <input id="email" name="loaithe" type="text" class="form-control input-md" required="">
-
                             </div>
                         </div>
 
@@ -100,6 +97,14 @@
         </c:if>
     </div>
 </div>
+
+<c:if test="${not empty alertDKFail}">
+    <script>
+        window.addEventListener("load",function(){
+            alert("${alertDKFail}")
+        });
+    </script>
+</c:if>
 
 <script src="./js/bandocpage/jquery.min.js"></script>
 <script src="./js/bandocpage/popper.js"></script>

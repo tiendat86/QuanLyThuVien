@@ -27,23 +27,17 @@ public class LuuTheBanDocServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         request.setCharacterEncoding("UTF-8");        
+        request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         HttpSession session = request.getSession();
         BanDoc bd = (BanDoc) session.getAttribute("bandoc");
         
         TheBanDocDAO tbddao = new TheBanDocDAO();
-        String msg;
+        String msg = "";
         
         if(tbddao.getTheBanDocTheoBanDoc(bd)!=null) {
             msg = "Bạn đã có thẻ bạn đọc!";
-        } else {
-            msg = "";
-            String mathe = request.getParameter("mathe");
-            String loaithe = request.getParameter("loaithe");
-            TheBanDoc tbd = new TheBanDoc(mathe, loaithe, bd);
-            tbddao.luuTheBanDoc(tbd);
         }
        String url = "/DKTheBanDoc.jsp";
        request.setAttribute("msg", msg);
@@ -55,7 +49,32 @@ public class LuuTheBanDocServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        HttpSession session = request.getSession();
+        BanDoc bd = (BanDoc) session.getAttribute("bandoc");
+
+        String mathe = request.getParameter("mathe");
+        String loaithe = request.getParameter("loaithe");
+        TheBanDocDAO tbddao = new TheBanDocDAO();
+        String alertDKSuccess = "", alertDKFail = "", url;
+
+        if(tbddao.getTheBanDocTheoMa(mathe)!=null) {
+            alertDKFail = "Mã thẻ bạn đọc đã có người đăng ký";
+            alertDKSuccess = "";
+            url = "/DKTheBanDoc.jsp";
+        } else {
+            alertDKSuccess = "Đăng ký thẻ bạn đọc thành công!";
+            alertDKFail = "";
+            TheBanDoc tbd = new TheBanDoc(mathe, loaithe, bd);
+            tbddao.luuTheBanDoc(tbd);
+            url = "/BanDoc.jsp";
+        }
+        request.setAttribute("alertDKSuccess", alertDKSuccess);
+        request.setAttribute("alertDKFail", alertDKFail);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(request, response);
     }
 
 }

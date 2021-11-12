@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,6 +64,14 @@
         <p>SĐT: 0875628498</p>
     </div>
 </div>
+
+<c:if test="${not empty alertDKSuccess}">
+    <script>
+        window.addEventListener("load",function(){
+            alert("${alertDKSuccess}")
+        });
+    </script>
+</c:if>
 
 <script src="./js/bandocpage/jquery.min.js"></script>
 <script src="./js/bandocpage/popper.js"></script>

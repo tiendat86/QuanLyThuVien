@@ -54,7 +54,7 @@ public class TaiLieuDAO extends DAO {
         }
         return null;
     }
-    
+
     public void updateSoLuongTaiLieu(String ma, int soluong) {
         String sql = "UPDATE `qlthuvien`.`tailieu` SET `soluong` = ? WHERE (`matailieu` = ?)";
         try {
@@ -62,7 +62,21 @@ public class TaiLieuDAO extends DAO {
             ps.setInt(1, soluong);
             ps.setString(2, ma);
              ps.executeUpdate();
-            
+
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(TaiLieuDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void updateGiaTaiLieu(String ma, float gia) {
+        String sql = "UPDATE `qlthuvien`.`tailieu` SET `gia` = ? WHERE (`matailieu` = ?);";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setFloat(1, gia);
+            ps.setString(2, ma);
+            ps.executeUpdate();
+
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(TaiLieuDAO.class.getName()).log(Level.SEVERE, null, ex);
