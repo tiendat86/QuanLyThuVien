@@ -39,7 +39,7 @@ public class ThemTaiLieuServlet extends HttpServlet {
                     Float.parseFloat(request.getParameter("gia")), request.getParameter("tacgia"), request.getParameter("nxb"),
                     Integer.parseInt(request.getParameter("soluong")));
             taiLieuDAO.themTaiLieu(taiLieu);
-            session.setAttribute("addTLSuccess", "Bạn đã thêm tài liệu thành công!");
+            request.setAttribute("addTLSuccess", "Bạn đã thêm tài liệu thành công!");
             url = "/NhapTaiLieu.jsp";
         } else {
             request.setAttribute("addTLFailer", "Mã tài liệu này đã có trong hệ thống!");

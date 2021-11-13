@@ -32,9 +32,7 @@ public class LuuPhieuTraServlet extends HttpServlet {
             taiLieuDAO.updateSoLuongTaiLieu(luottra.getLuotMuon().getTaiLieu().getMatl(),
                     luottra.getLuotMuon().getTaiLieu().getSoluong() + 1);
         }
-        session.setAttribute("luuPhieuTrasuccess", "Bạn đã lưu phiếu trả thành công!");
-        session.setAttribute("luuHoaDonsuccess", "");
-        session.setAttribute("luuPhieuMuonsuccess", "");
+        request.setAttribute("luuPhieuTrasuccess", "Bạn đã lưu phiếu trả thành công!");
         String url = "/NVThuVien.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);

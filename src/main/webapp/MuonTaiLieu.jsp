@@ -177,8 +177,8 @@
                                                     </div>
                                                     <div class="modal-body" style="font-size: 18px;">
                                                         <span>Mã: ${tailieu.matl}</span>
-                                                        <span>Tác giả: ${tailieu.tacgia}</span><br>
-                                                        <span class="float-right">Tên: ${tailieu.ten}</span>
+                                                        <span class="float-right">Tác giả: ${tailieu.tacgia}</span><br>
+                                                        <span>Tên: ${tailieu.ten}</span>
                                                         <span class="float-right">NXB: ${tailieu.nxb}</span><br>
                                                         <span>Giá: ${tailieu.gia}</span>
                                                         <span class="float-right">Số lượng: ${tailieu.soluong}</span><br>

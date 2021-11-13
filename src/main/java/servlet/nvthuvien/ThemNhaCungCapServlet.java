@@ -29,7 +29,7 @@ public class ThemNhaCungCapServlet extends HttpServlet {
                 request.getParameter("diachi"), request.getParameter("sdt"));
         nhaCungCapDAO.themNhaCungCap(ncc);
         String url = "/TimNCC.jsp";
-        session.setAttribute("addNccSuccess", "Bạn đã thêm nhà cung cấp thành công!");
+        request.setAttribute("addNccSuccess", "Bạn đã thêm nhà cung cấp thành công!");
 //        out.println("<script type="text/javascript">");
 //        out.println("alert('User or password incorrect');");
 //        out.println("</script>");

@@ -61,7 +61,7 @@
                 </c:forEach>
                 </tbody>
             </table>
-
+        <a href="NVQuanLi.jsp" class="btn btn-success mt-4">Quay lại</a>
 </div>
 
 <script src="./js/bandocpage/jquery.min.js"></script>

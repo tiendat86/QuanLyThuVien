@@ -34,9 +34,7 @@ public class LuuHoaDonServlet extends HttpServlet {
             taiLieuDAO.updateSoLuongTaiLieu(luotnhaps.get(i).getTailieu().getMatl(),
                     luotnhaps.get(i).getTailieu().getSoluong() + luotnhaps.get(i).getSoluong());
         }
-        session.setAttribute("luuHoaDonsuccess", "Bạn đã lưu hóa đơn thành công!");
-        session.setAttribute("luuPhieuTrasuccess", "");
-        session.setAttribute("luuPhieuMuonsuccess", "");
+        request.setAttribute("luuHoaDonsuccess", "Bạn đã lưu hóa đơn thành công!");
         String url = "/NVThuVien.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
