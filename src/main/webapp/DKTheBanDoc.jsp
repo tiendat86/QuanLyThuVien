@@ -85,7 +85,7 @@
 
                         <!-- Button (Double) -->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="save"></label>
+                            <label class="col-md-4 control-label"></label>
                             <div class="col-md-8">
                                 <input type="submit" value="Lưu" class="btn btn-success">
                                 <button id="clear" name="clear" class="btn btn-danger">Reset</button>

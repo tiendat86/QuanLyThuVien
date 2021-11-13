@@ -45,15 +45,15 @@
     <div class="card-body">
         <div class="row mt-2 mb-2">
             <div class="col">
-                <label for="name">Người in: </label>
+                <label>Người in: </label>
                 <input type="text" class="form-control ml-2" value="${nhanvien.nguoiDung.ten}" disabled>
-                <label for="name">Người mượn: </label>
+                <label>Người mượn: </label>
                 <input type="text" class="form-control ml-2" value="${thebandoc.banDoc.nguoiDung.ten}" disabled>
             </div>
             <div class="col">
-                <label for="name">Ngày in </label>
+                <label>Ngày in </label>
                 <input type="text" class="form-control ml-2"
-                       value="<%=LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))%>" disabled>
+                       value="<%=LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))%>" disabled>
 
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#exampleModal">

@@ -46,44 +46,16 @@
         <div class="row mt-2 mb-2">
             <div class="col">
                 <label>Người in: </label>
-                <input type="text" class="form-control ml-2" value="${nhanvien.nguoiDung.ten}" disabled>
-                <label>Người trả: </label>
-                <input type="text" class="form-control ml-2" value="${thebandoc.banDoc.nguoiDung.ten}" disabled>
+                <input type="text" class="form-control ml-2" value="${phieumuon.nguoiin.nguoiDung.ten}" disabled>
+                <label>Người mượn: </label>
+                <input type="text" class="form-control ml-2"
+                       value="${nguoimuon.ten}" disabled>
             </div>
             <div class="col">
                 <label>Ngày in </label>
                 <input type="text" class="form-control ml-2"
-                       value="<%=LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))%>" disabled>
+                       value="${phieumuon.ngayin.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))}" disabled>
 
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-info mt-4" data-toggle="modal" data-target="#savePhieuTra">
-                    Lưu phiếu trả
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="savePhieuTra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Lưu phiếu trả</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                Bạn có chắc chắn lưu phiếu trả?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
-                                <a href="luuPhieuTra" class="btn btn-primary">Xác nhận</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-<%--                <a href="luuPhieuMuon" class="btn btn-primary">Xác nhận</a>--%>
-                <a href="#" class="btn btn-secondary mt-4">In phiếu trả</a>
             </div>
         </div>
 
@@ -93,19 +65,15 @@
                 <th>Tên tài liệu</th>
                 <th>Tác giả</th>
                 <th>Nhà xuất bản</th>
-                <th>Tổn thất</th>
-                <th>Tiền phạt</th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="luottra" items="${luottras}">
+            <c:forEach var="luotmuon" items="${phieumuon.listLuotMuon}">
                 <tr>
-                    <td>${luottra.luotMuon.taiLieu.ten}</td>
-                    <td>${luottra.luotMuon.taiLieu.tacgia}</td>
-                    <td>${luottra.luotMuon.taiLieu.nxb}</td>
-                    <td>${luottra.tonthat}</td>
-                    <td>${luottra.tienphat}</td>
+                    <td>${luotmuon.taiLieu.ten}</td>
+                    <td>${luotmuon.taiLieu.tacgia}</td>
+                    <td>${luotmuon.taiLieu.nxb}</td>
                     <td>
                         <a href="#" class="btn btn-outline-info"><i class="fas fa-info"></i></a>
                     </td>
@@ -113,9 +81,6 @@
             </c:forEach>
             </tbody>
         </table>
-
-        <h2>Tổng tiền phạt: ${phieutra.tongtienphat}</h2>
-
     </div>
 </div>
 

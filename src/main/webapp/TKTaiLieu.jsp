@@ -1,5 +1,5 @@
-<%-- 
-    Document   : BanDoc
+<%--
+    Document   : TimTaiLieu
     Created on : Nov 8, 2021, 12:13:37 AM
     Author     : dangt
 --%>
@@ -14,9 +14,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+          integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/bandocpage/style.css">
+
 </head>
 <body>
 
@@ -65,9 +69,48 @@
             </div>
         </nav>
 
-        <h2 class="mb-4">Xin chào, ${nhanvien.getNguoiDung().getTen()}</h2>
-        <p>Website thư viện trực tuyến, email: thuvienptit@edu.vn</p>
-        <p>SĐT: 0875628498</p>
+        <form action="tkTaiLieu" method="post" style="display: inline">
+            <div class="form-inline float-left">
+                <label>Ngày bắt đầu: </label>
+                <input type="text" class="form-control ml-2" name="ngaybatdau"
+                       pattern='(?:((?:0[1-9]|1[0-9]|2[0-9])\/(?:0[1-9]|1[0-2])|(?:30)\/(?!02)(?:0[1-9]|1[0-2])
+                       |31\/(?:0[13578]|1[02]))\/(?:19|20)[0-9]{2})'
+                       title="Nhập đúng định dạng dd/MM/yyyy">
+                <label>Ngày kết thúc: </label>
+                <input type="text" class="form-control ml-2" name="ngayketthuc"
+                       pattern='(?:((?:0[1-9]|1[0-9]|2[0-9])\/(?:0[1-9]|1[0-2])|(?:30)\/(?!02)(?:0[1-9]|1[0-2])
+                       |31\/(?:0[13578]|1[02]))\/(?:19|20)[0-9]{2})'
+                       title="Nhập đúng định dạng dd/MM/yyyy">
+                <input type="submit" value="Thống kê" class="btn btn-success">
+            </div>
+        </form>
+
+        <br><span>${errorDate}</span>
+        <c:if test="${tktailieus.size() > 0}">
+            <table class="table table-striped table-inverse">
+                <thead class="thead-inverse">
+                <tr>
+                    <th>Mã tài liệu</th>
+                    <th>Tên tài liệu</th>
+                    <th>Số lượng mượn</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="tktailieu" items="${tktailieus}">
+                    <tr>
+                        <td>${tktailieu.taiLieu.matl}</td>
+                        <td>${tktailieu.taiLieu.ten}</td>
+                        <td>${tktailieu.soluong}</td>
+                        <td>
+                            <a href="luotMuonTheoTaiLieu?value=${tktailieu.taiLieu.matl}" class="btn btn-info"><i class="fas fa-info"></i></a>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </c:if>
+
     </div>
 </div>
 

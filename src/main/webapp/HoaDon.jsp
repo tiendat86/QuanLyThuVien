@@ -45,13 +45,13 @@
     <div class="card-body">
         <div class="row mt-2 mb-2">
             <div class="col">
-                <label for="name">Người in: </label>
+                <label>Người in: </label>
                 <input type="text" class="form-control ml-2" value="${nhanvien.nguoiDung.ten}" disabled>
-                <label for="name">Nhà cung cấp: </label>
+                <label>Nhà cung cấp: </label>
                 <input type="text" class="form-control ml-2" value="${nhacungcap.ten}" disabled>
             </div>
             <div class="col">
-                <label for="name">Ngày in </label>
+                <label>Ngày in </label>
                 <input type="text" class="form-control ml-2"
                        value="<%=LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))%>" disabled>
 

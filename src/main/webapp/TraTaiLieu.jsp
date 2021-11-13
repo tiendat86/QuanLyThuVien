@@ -85,7 +85,7 @@
 
                                     <form action="timTheBanDoc" method="post" style="display: inline">
                                         <div class="form-inline float-left">
-                                            <label for="name">Nhập mã thẻ bạn đọc </label>
+                                            <label>Nhập mã thẻ bạn đọc </label>
                                             <input type="text" class="form-control ml-2" name="mathe">
                                             <!--<input type="submit" value="Tìm kiếm" class="btn btn-primary" style="margin-left: 20px;">-->
                                             <button type="submit"

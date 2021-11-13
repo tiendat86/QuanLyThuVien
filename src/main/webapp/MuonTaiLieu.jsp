@@ -85,7 +85,7 @@
 
                                     <form action="timTheBanDoc" method="get" style="display: inline">
                                         <div class="form-inline float-left">
-                                            <label for="name">Nhập mã thẻ bạn đọc </label>
+                                            <label>Nhập mã thẻ bạn đọc </label>
                                             <input type="text" class="form-control ml-2" name="mathe">
                                             <!--<input type="submit" value="Tìm kiếm" class="btn btn-primary" style="margin-left: 20px;">-->
                                             <button type="submit"
@@ -124,7 +124,7 @@
                     <div class="row">
                         <form action="chonTaiLieuMuon" method="post" style="display: inline">
                             <div class="form-inline float-left">
-                                <label for="name">Nhập mã tài liệu </label>
+                                <label>Nhập mã tài liệu </label>
                                 <input type="text" class="form-control ml-2" name="matailieu">
                                 <button type="submit"
                                         style="margin-left: 16px; border: none;background-color: #fafafa;font-size: 24px;">
@@ -210,15 +210,18 @@
                     <form action="luuPhieuMuon" method="post" style="display: inline">
                         <div class="row">
                             <div class="col">
-                                <label for="name">Ngày mượn </label>
+                                <label>Ngày mượn </label>
                                 <input type="text" class="form-control" name="ngaymuon"
-                                       value="<%=LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))%>"
+                                       value="<%=LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))%>"
                                        disabled>
                             </div>
 
                             <div class="col">
-                                <label for="name">Ngày phải trả </label>
-                                <input type="text" class="form-control" name="ngaytra">
+                                <label>Ngày phải trả </label>
+                                <input type="text" class="form-control" name="ngaytra"
+                                       pattern='(?:((?:0[1-9]|1[0-9]|2[0-9])\/(?:0[1-9]|1[0-2])|(?:30)\/(?!02)(?:0[1-9]|1[0-2])
+                                       |31\/(?:0[13578]|1[02]))\/(?:19|20)[0-9]{2})'
+                                       title="Nhập đúng định dạng dd/MM/yyyy">
                             </div>
                         </div>
                         <br>

@@ -69,7 +69,7 @@
                 <div class="col">
                     <form action="timTaiLieu" method="get" style="display: inline">
                         <div class="form-inline float-left">
-                            <label for="name">Tên tài liệu: </label>
+                            <label>Tên tài liệu: </label>
                             <input type="text" class="form-control ml-2" name="tentailieu">
                             <input type="submit" value="Tìm tài liệu" class="btn btn-success">
                         </div>

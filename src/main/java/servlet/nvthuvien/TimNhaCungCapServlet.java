@@ -18,7 +18,7 @@ public class TimNhaCungCapServlet extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         HttpSession session = request.getSession();
 
-        NhaCungCap ncc = new NhaCungCapDAO().getNhaCungCapTheoMa(request.getParameter("value"));
+        NhaCungCap ncc = new NhaCungCapDAO().getNhaCungCapTheoMa(Integer.parseInt(request.getParameter("value")));
         session.setAttribute("nhacungcap", ncc);
         String url = "/NhapTaiLieu.jsp";
         session.setAttribute("addNccSuccess", "");

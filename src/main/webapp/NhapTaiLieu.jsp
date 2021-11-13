@@ -35,7 +35,7 @@
                 <h5 class="mb-0">
                     <form action="timTaiLieuNhap" method="post" style="display: inline">
                         <div class="form-inline float-left">
-                            <label for="name">Nhập mã tài liệu </label>
+                            <label>Nhập mã tài liệu </label>
                             <input type="text" class="form-control ml-2" name="matailieu">
                             <button type="submit"
                                     style="margin-left: 16px; border: none;background-color: #fafafa;font-size: 24px;">
@@ -102,9 +102,9 @@
                                 <td>${tl.tacgia}</td>
                                 <td>${tl.nxb}</td>
                                 <td><input type="number" name="soluongs" min="1"
-                                                         style="border: none; width: 102px;"></td>
+                                           style="border: none; width: 102px;"></td>
                                 <td><input type="number" name="dongias" value="${tl.gia}"
-                                                         style="border: none; width: 150px"></td>
+                                           style="border: none; width: 150px"></td>
                             </tr>
                         </c:forEach>
                         </tbody>

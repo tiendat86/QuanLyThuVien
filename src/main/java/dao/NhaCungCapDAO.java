@@ -29,11 +29,11 @@ public class NhaCungCapDAO extends DAO {
         return list;
     }
 
-    public NhaCungCap getNhaCungCapTheoMa(String ma) {
+    public NhaCungCap getNhaCungCapTheoMa(int ma) {
         String sql = "select * from nhacungcap where mancc = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, ma);
+            ps.setInt(1, ma);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 return new NhaCungCap(rs.getInt("mancc"), rs.getString("ten"),

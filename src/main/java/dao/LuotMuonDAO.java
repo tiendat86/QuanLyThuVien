@@ -76,4 +76,74 @@ public class LuotMuonDAO extends DAO {
         }
         return list;
     }
+
+    public List<LuotMuon> getLuotMuonsTheoTaiLieu(String matl) {
+        String sql = "select * from luotmuon where matailieu = ?";
+        List<LuotMuon> list = new ArrayList<>();
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, matl);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new LuotMuon(rs.getInt("id"),
+                        new TaiLieuDAO().getTaiLieuTheoMa(rs.getString("matailieu")),
+                        new TheBanDocDAO().getTheBanDocTheoMa(rs.getString("mathebandoc")),
+                        rs.getDate("ngaymuon").toLocalDate(), rs.getDate("ngayphaitra").toLocalDate(),
+                        rs.getString("mota")));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<LuotMuon> getLuotMuonsTheoBanDoc(String mathebandoc) {
+        String sql = "select * from luotmuon where mathebandoc = ?";
+        List<LuotMuon> list = new ArrayList<>();
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, mathebandoc);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new LuotMuon(rs.getInt("id"),
+                        new TaiLieuDAO().getTaiLieuTheoMa(rs.getString("matailieu")),
+                        new TheBanDocDAO().getTheBanDocTheoMa(rs.getString("mathebandoc")),
+                        rs.getDate("ngaymuon").toLocalDate(), rs.getDate("ngayphaitra").toLocalDate(),
+                        rs.getString("mota")));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return list;
+    }
+
+    public PhieuMuon getPhieuMuonTheoLuotMuon(int id) {
+        List<LuotMuon> luotmuons = new ArrayList<>();
+        String sql = "select luotmuon.*, idnvthuvien \n" +
+                "from luotmuon inner join phieumuon\n" +
+                "on luotmuon.phieumuonid = phieumuon.id\n" +
+                "where phieumuonid = \n" +
+                "(select phieumuonid from luotmuon where id = ?) ";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            int idPM = 0;
+            String idNVThuVien = null;
+            while (rs.next()) {
+                luotmuons.add(new LuotMuon(rs.getInt("id"),
+                        new TaiLieuDAO().getTaiLieuTheoMa(rs.getString("matailieu")),
+                        new TheBanDocDAO().getTheBanDocTheoMa(rs.getString("mathebandoc")),
+                        rs.getDate("ngaymuon").toLocalDate(), rs.getDate("ngayphaitra").toLocalDate(),
+                        rs.getString("mota")));
+                idPM = rs.getInt("phieumuonid");
+                idNVThuVien = rs.getString("idnvthuvien");
+            }
+            return new PhieuMuon(idPM ,luotmuons, luotmuons.get(0).getNgaymuon(), new NVThuVienDAO().
+                    getNVThuVienTheoNguoiDung(new NguoiDungDAO().getNguoiDungTheoMa(idNVThuVien)));
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
 }
