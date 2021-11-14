@@ -5,6 +5,7 @@
  */
 package servlet.nvthuvien;
 
+import dao.LuotMuonDAO;
 import dao.TaiLieuDAO;
 
 import java.io.IOException;
@@ -17,7 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.LuotMuon;
 import model.TaiLieu;
+import model.TheBanDoc;
 
 /**
  * @author dangt
@@ -34,6 +37,8 @@ public class ChonTaiLieuMuonServlet extends HttpServlet {
         HttpSession session = request.getSession();
         TaiLieu tailieu = (TaiLieu) session.getAttribute("tailieu");
         String msg = "";
+        TheBanDoc tbd = (TheBanDoc) session.getAttribute("thebandoc");
+        List<LuotMuon> luotmuons = new LuotMuonDAO().getLuotMuonsChuaTraTheoMaTheBD(tbd.getMathe());
         if (list.size() > 0) {
             for (TaiLieu tl : list) {
                 if (tl.getMatl().equals(tailieu.getMatl())) {
@@ -42,7 +47,12 @@ public class ChonTaiLieuMuonServlet extends HttpServlet {
                 }
             }
         }
-
+        for (int i = 0; i < luotmuons.size(); i++) {
+            if(luotmuons.get(i).getTaiLieu().getMatl().equals(tailieu.getMatl())) {
+                msg = "Tài liệu này đã mượn!";
+                break;
+            }
+        }
         if (msg.equals("")) {
             list.add(tailieu);
         }
@@ -64,9 +74,11 @@ public class ChonTaiLieuMuonServlet extends HttpServlet {
         String ma = request.getParameter("matailieu");
         TaiLieu tailieu = taiLieuDAO.getTaiLieuTheoMa(ma);
         String msg2 = "";
+        
         if (tailieu == null) {
             msg2 = "Không tìm thấy tài liệu";
         }
+        
         request.setAttribute("msg2", msg2);
         session.setAttribute("tailieu", tailieu);
         String url = "/MuonTaiLieu.jsp";

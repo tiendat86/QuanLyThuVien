@@ -1,5 +1,6 @@
 package servlet.nvquanli;
 
+import dao.HoaDonDAO;
 import dao.LuotNhapDAO;
 import model.HoaDon;
 
@@ -23,7 +24,7 @@ public class HoaDonTheoLuotNhapServlet extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("idluotnhap"));
 
-        HoaDon hoadon = new LuotNhapDAO().getHoaDonTheoLuotNhap(id);
+        HoaDon hoadon = new HoaDonDAO().getHoaDonTheoLuotNhap(id);
 
         request.setAttribute("hoadon", hoadon);
         String url = "/XemHoaDon.jsp";

@@ -51,4 +51,34 @@ public class PhieuMuonDAO extends DAO {
         }
         return 0;
     }
+
+    public PhieuMuon getPhieuMuonTheoLuotMuon(int idluotmuon) {
+        List<LuotMuon> luotmuons = new ArrayList<>();
+        String sql = "select luotmuon.*, idnvthuvien \n" +
+                "from luotmuon inner join phieumuon\n" +
+                "on luotmuon.phieumuonid = phieumuon.id\n" +
+                "where phieumuonid = \n" +
+                "(select phieumuonid from luotmuon where id = ?) ";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, idluotmuon);
+            ResultSet rs = ps.executeQuery();
+            int idPM = 0;
+            String idNVThuVien = null;
+            while (rs.next()) {
+                luotmuons.add(new LuotMuon(rs.getInt("id"),
+                        new TaiLieuDAO().getTaiLieuTheoMa(rs.getString("matailieu")),
+                        new TheBanDocDAO().getTheBanDocTheoMa(rs.getString("mathebandoc")),
+                        rs.getDate("ngaymuon").toLocalDate(), rs.getDate("ngayphaitra").toLocalDate(),
+                        rs.getString("mota")));
+                idPM = rs.getInt("phieumuonid");
+                idNVThuVien = rs.getString("idnvthuvien");
+            }
+            return new PhieuMuon(idPM ,luotmuons, luotmuons.get(0).getNgaymuon(), new NVThuVienDAO().
+                    getNVThuVienTheoNguoiDung(new NguoiDungDAO().getNguoiDungTheoMa(idNVThuVien)));
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
 }

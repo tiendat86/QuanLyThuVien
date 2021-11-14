@@ -1,6 +1,7 @@
 package servlet.nvquanli;
 
 import dao.LuotMuonDAO;
+import dao.PhieuMuonDAO;
 import model.LuotMuon;
 import model.PhieuMuon;
 
@@ -21,7 +22,7 @@ public class PhieuMuonTheoLuotMuonServlet extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("idluotmuon"));
         LuotMuonDAO luotMuonDAO = new LuotMuonDAO();
-        PhieuMuon phieumuon = luotMuonDAO.getPhieuMuonTheoLuotMuon(id);
+        PhieuMuon phieumuon = new PhieuMuonDAO().getPhieuMuonTheoLuotMuon(id);
         request.setAttribute("nguoimuon", phieumuon.getListLuotMuon().get(0).getTheBanDoc().getBanDoc().getNguoiDung());
         request.setAttribute("phieumuon", phieumuon);
         String url = "/XemPhieuMuon.jsp";
