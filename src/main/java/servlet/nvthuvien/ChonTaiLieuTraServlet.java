@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(name = "ChonTaiLieuTraServlet", value = "/ChonTaiLieuTraServlet")
+@WebServlet(name = "ChonTaiLieuTraServlet", value = "/chonTaiLieuTra")
 public class ChonTaiLieuTraServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -52,7 +52,6 @@ public class ChonTaiLieuTraServlet extends HttpServlet {
                     System.out.println(luotMuons.get(i).getTaiLieu().getGia() * (tonthat / 100));
                     tienphat = luotMuons.get(i).getTaiLieu().getGia() * (tonthat / 100f) + tramuon * 3000f;
                     tongTien += tienphat;
-
                     luottras.add(new LuotTra(LocalDate.now(), "", tienphat, tonthat, luotMuons.get(i)));
                 }
             }

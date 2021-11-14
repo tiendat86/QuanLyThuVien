@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class HoaDon implements Serializable {
     private int id;
-    private float tongtien;
+    private double tongtien;
     private int tongsoluong;
     private List<LuotNhap> dsluotnhap;
     private NVThuVien nguoiin;
@@ -22,7 +22,7 @@ public class HoaDon implements Serializable {
     public HoaDon() {
     }
 
-    public HoaDon(int id, float tongtien, int tongsoluong, List<LuotNhap> dsluotnhap, NVThuVien nguoiin) {
+    public HoaDon(int id, double tongtien, int tongsoluong, List<LuotNhap> dsluotnhap, NVThuVien nguoiin) {
         this.id = id;
         this.tongtien = tongtien;
         this.tongsoluong = tongsoluong;
@@ -38,11 +38,11 @@ public class HoaDon implements Serializable {
         this.id = id;
     }
 
-    public float getTongtien() {
+    public double getTongtien() {
         return tongtien;
     }
 
-    public void setTongtien(float tongtien) {
+    public void setTongtien(double tongtien) {
         this.tongtien = tongtien;
     }
 

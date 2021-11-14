@@ -6,6 +6,7 @@
 
 <%@page import="java.time.format.DateTimeFormatter" %>
 <%@page import="java.time.LocalDate" %>
+<%@page import="java.text.DecimalFormat" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -110,7 +111,7 @@
 
         <h2>Tổng số lượng: ${hoadon.tongsoluong}</h2>
         <br>
-        <h2>Tổng tiền: ${hoadon.tongtien}</h2>
+        <h2>Tổng tiền: ${tongtien}</h2>
     </div>
 </div>
 

@@ -10,6 +10,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +55,7 @@ public class LuuHoaDonServlet extends HttpServlet {
         String []soluongs = request.getParameterValues("soluongs");
         String []dongias = request.getParameterValues("dongias");
 
-        float tongtien = 0;
+        double tongtien = 0;
         int tongsoluong = 0;
         LuotNhapDAO luotNhapDAO = new LuotNhapDAO();
         int inc = luotNhapDAO.maxIDLuotNhap() + 1;
@@ -67,6 +68,9 @@ public class LuuHoaDonServlet extends HttpServlet {
         }
 
         HoaDon hoaDon = new HoaDon(new HoaDonDAO().maxIDHoaDon() + 1, tongtien, tongsoluong, luotnhaps, nv);
+        DecimalFormat df = new DecimalFormat("#");
+        df.setMaximumFractionDigits(4);
+        request.setAttribute("tongtien", df.format(tongtien));
         session.setAttribute("luotnhaps", luotnhaps);
         session.setAttribute("hoadon", hoaDon);
         String url = "/HoaDon.jsp";
