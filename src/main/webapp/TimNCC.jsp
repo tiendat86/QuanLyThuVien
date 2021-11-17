@@ -101,9 +101,9 @@
                             <table class="table table-striped table-inverse">
                                 <thead class="thead-inverse">
                                 <tr>
-                                    <th>Tên tài liệu</th>
-                                    <th>Tác giả</th>
-                                    <th>Nhà xuất bản</th>
+                                    <th>Tên nhà cung cấp</th>
+                                    <th>Địa chỉ</th>
+                                    <th>SĐT</th>
                                     <th></th>
                                 </tr>
                                 </thead>

@@ -31,7 +31,7 @@
         <div class="card">
 
             <div class="card-header">
-                <h2>Thêm nhà cung cấp</h2>
+                <h2>Thêm tài liệu</h2>
             </div>
 
             <div class="card-body">
