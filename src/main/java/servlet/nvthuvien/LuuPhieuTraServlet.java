@@ -29,8 +29,7 @@ public class LuuPhieuTraServlet extends HttpServlet {
         phieuTraDAO.luuPhieuTra(phieuTra);
         for(LuotTra luottra : luottras) {
             luotTraDAO.luuLuotTra(luottra, phieuTra);
-            taiLieuDAO.updateSoLuongTaiLieu(luottra.getLuotMuon().getTaiLieu().getMatl(),
-                    luottra.getLuotMuon().getTaiLieu().getSoluong() + 1);
+            taiLieuDAO.updateSoLuongTaiLieu(luottra.getLuotMuon().getTaiLieu().getMatl(),1);
         }
         request.setAttribute("luuPhieuTrasuccess", "Bạn đã lưu phiếu trả thành công!");
         String url = "/NVThuVien.jsp";

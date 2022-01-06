@@ -12,15 +12,19 @@ import java.util.List;
 
 @WebServlet(name = "TimTaiLieuNhapServlet", value = "/timTaiLieuNhap")
 public class TimTaiLieuNhapServlet extends HttpServlet {
-    List<TaiLieu> list = new ArrayList<>();
+//    List<TaiLieu> list = new ArrayList<>();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         HttpSession session = request.getSession();
+
         TaiLieu tailieu = (TaiLieu) session.getAttribute("tailieu");
+        List<TaiLieu> list = (List<TaiLieu>) session.getAttribute("tailieus");
+        if(list == null) list = new ArrayList<>();
         String msg = "";
+
         if(list.size() > 0) {
             for(TaiLieu tl : list) {
                 if(tl.getMatl().equals(tailieu.getMatl())) {

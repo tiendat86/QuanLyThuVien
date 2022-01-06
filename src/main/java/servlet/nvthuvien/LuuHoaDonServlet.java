@@ -32,10 +32,10 @@ public class LuuHoaDonServlet extends HttpServlet {
         hoaDonDAO.luuHoaDon(hoaDon);
         for (int i = 0; i < luotnhaps.size(); i++) {
             luotNhapDAO.luuLuotNhap(luotnhaps.get(i), hoaDon);
-            taiLieuDAO.updateSoLuongTaiLieu(luotnhaps.get(i).getTailieu().getMatl(),
-                    luotnhaps.get(i).getTailieu().getSoluong() + luotnhaps.get(i).getSoluong());
+            taiLieuDAO.updateSoLuongTaiLieu(luotnhaps.get(i).getTailieu().getMatl(), luotnhaps.get(i).getSoluong());
         }
         request.setAttribute("luuHoaDonsuccess", "Bạn đã lưu hóa đơn thành công!");
+        session.removeAttribute("tailieus");
         String url = "/NVThuVien.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);

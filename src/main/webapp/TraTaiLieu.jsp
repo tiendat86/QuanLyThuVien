@@ -4,10 +4,9 @@
     Author     : dangt
 --%>
 
-<%@page import="java.time.LocalDate" %>
-<%@page import="java.time.format.DateTimeFormatter" %>
 <%@page import="java.time.LocalDateTime" %>
 <%@page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -126,6 +125,8 @@
                                 <th>Tên tài liệu</th>
                                 <th>Tác giả</th>
                                 <th>Nhà xuất bản</th>
+                                <th>Ngày mượn</th>
+                                <th>Ngày phải trả</th>
                                 <th col-2>Tình trạng tài liệu</th>
                             </tr>
                             </thead>
@@ -138,6 +139,8 @@
                                     <td>${luotmuon.taiLieu.ten}</td>
                                     <td>${luotmuon.taiLieu.tacgia}</td>
                                     <td>${luotmuon.taiLieu.nxb}</td>
+                                    <td>${luotmuon.ngaymuon.format( DateTimeFormatter.ofPattern("dd/MM/yyyy"))}</td>
+                                    <td>${luotmuon.ngayphaitra.format( DateTimeFormatter.ofPattern("dd/MM/yyyy"))}</td>
                                     <td><input type="number" name="tinhtrangs" min="0" max="100">%</td>
                                 </tr>
                             </c:forEach>

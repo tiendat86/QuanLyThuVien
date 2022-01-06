@@ -20,7 +20,7 @@ public class LuotMuonTheoTaiLieuServlet extends HttpServlet {
 
         String matl = request.getParameter("value");
         LuotMuonDAO luotMuonDAO = new LuotMuonDAO();
-        List<LuotMuon> luotmuons = luotMuonDAO.getLuotMuonsTheoTaiLieu(matl);
+        List<LuotMuon> luotmuons = luotMuonDAO.getLuotMuonTheoMaTL(matl);
         request.setAttribute("luotmuons", luotmuons);
         String url = "/XemLuotMuon.jsp";
 

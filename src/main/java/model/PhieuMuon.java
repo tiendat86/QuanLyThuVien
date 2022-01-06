@@ -67,6 +67,5 @@ public class PhieuMuon implements Serializable {
     public void setNguoiin(NVThuVien nguoiin) {
         this.nguoiin = nguoiin;
     }
-    
-    
+
 }

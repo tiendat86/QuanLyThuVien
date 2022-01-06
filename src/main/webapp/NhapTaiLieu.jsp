@@ -110,8 +110,12 @@
                         </tbody>
                     </table>
                     <input type="submit" value="Xác nhận" class="btn btn-success mt-2 mb-4 float-right">
+                    <a href="quayLaiTimNcc" class="btn btn-primary float-right" style="margin: 8px;">Quay lại</a>
                 </form>
             </div>
+
+
+
         </div>
     </div>
 </div>

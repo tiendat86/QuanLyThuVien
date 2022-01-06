@@ -77,7 +77,7 @@ public class LuotMuonDAO extends DAO {
         return list;
     }
 
-    public List<LuotMuon> getLuotMuonsTheoTaiLieu(String matl) {
+    public List<LuotMuon> getLuotMuonTheoMaTL(String matl) {
         String sql = "select * from luotmuon where matailieu = ?";
         List<LuotMuon> list = new ArrayList<>();
         try {

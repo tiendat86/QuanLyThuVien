@@ -38,6 +38,7 @@ public class ChonTaiLieuTraServlet extends HttpServlet {
 
         for (int i = 0; i < luotMuons.size(); i++) {
             for (int j = 0; j < chons.length; j++) {
+
                 if(luotMuons.get(i).getTaiLieu().getMatl().equals(chons[j])) {
                     int tonthat = 100 - Integer.parseInt(tinhtrang[i]);
                     int tramuon;
@@ -48,11 +49,10 @@ public class ChonTaiLieuTraServlet extends HttpServlet {
                     } else {
                         tramuon = Math.max(0,LocalDate.now().getDayOfYear() - luotMuons.get(i).getNgayphaitra().getDayOfYear());
                     }
-                    System.out.println(luotMuons.get(i).getTaiLieu().getGia());
-                    System.out.println(luotMuons.get(i).getTaiLieu().getGia() * (tonthat / 100));
+
                     tienphat = luotMuons.get(i).getTaiLieu().getGia() * (tonthat / 100f) + tramuon * 3000f;
                     tongTien += tienphat;
-                    luottras.add(new LuotTra(LocalDate.now(), "", tienphat, tonthat, luotMuons.get(i)));
+                    luottras.add(new LuotTra(LocalDate.now(), "", tienphat, tonthat, luotMuons.get(i), tramuon));
                 }
             }
         }

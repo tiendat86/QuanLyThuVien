@@ -48,7 +48,7 @@ public class LuuPhieuMuonServlet extends HttpServlet {
         pmdao.luuPhieuMuon(phieumuon);
         for (LuotMuon luotmuon : luotmuons) {
             lmdao.luuLuotMuon(luotmuon, phieumuon);
-            tldao.updateSoLuongTaiLieu(luotmuon.getTaiLieu().getMatl(), luotmuon.getTaiLieu().getSoluong() - 1);
+            tldao.updateSoLuongTaiLieu(luotmuon.getTaiLieu().getMatl(), - 1);
         }
         request.setAttribute("luuPhieuMuonsuccess", "Bạn đã lưu phiếu mượn thành công!");
         String url = "/NVThuVien.jsp";

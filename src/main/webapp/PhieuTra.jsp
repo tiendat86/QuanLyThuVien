@@ -95,7 +95,7 @@
                 <th>Nhà xuất bản</th>
                 <th>Tổn thất</th>
                 <th>Tiền phạt</th>
-                <th></th>
+                <th>Số ngày trả muộn</th>
             </tr>
             </thead>
             <tbody>
@@ -106,9 +106,7 @@
                     <td>${luottra.luotMuon.taiLieu.nxb}</td>
                     <td>${luottra.tonthat}</td>
                     <td>${luottra.tienphat}</td>
-                    <td>
-                        <a href="#" class="btn btn-outline-info"><i class="fas fa-info"></i></a>
-                    </td>
+                    <td>${luottra.ngayMuon}</td>
                 </tr>
             </c:forEach>
             </tbody>

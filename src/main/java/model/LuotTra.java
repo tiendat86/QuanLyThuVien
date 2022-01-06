@@ -19,6 +19,7 @@ public class LuotTra implements Serializable {
     private float tienphat;
     private int tonthat;
     private LuotMuon luotMuon;
+    private int ngayMuon;
 
     public LuotTra() {
     }
@@ -36,6 +37,15 @@ public class LuotTra implements Serializable {
         this.tienphat = tienphat;
         this.tonthat = tonthat;
         this.luotMuon = luotMuon;
+    }
+
+    public LuotTra(LocalDate ngaytra, String mota, float tienphat, int tonthat, LuotMuon luotMuon, int ngayMuon) {
+        this.ngaytra = ngaytra;
+        this.mota = mota;
+        this.tienphat = tienphat;
+        this.tonthat = tonthat;
+        this.luotMuon = luotMuon;
+        this.ngayMuon = ngayMuon;
     }
 
     public LuotMuon getLuotMuon() {
@@ -77,6 +87,12 @@ public class LuotTra implements Serializable {
     public void setTonthat(int tonthat) {
         this.tonthat = tonthat;
     }
-    
-    
+
+    public int getNgayMuon() {
+        return ngayMuon;
+    }
+
+    public void setNgayMuon(int ngayMuon) {
+        this.ngayMuon = ngayMuon;
+    }
 }
